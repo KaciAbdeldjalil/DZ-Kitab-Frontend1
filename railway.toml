@@ -1,7 +1,0 @@
-[build]
-builder = "nixpacks"
-
-[deploy]
-# Explicitly tell vite to bind to all interfaces
-startCommand = "npm run preview -- --host 0.0.0.0 --port 4173"
-port = 4173

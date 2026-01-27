@@ -1,31 +1,29 @@
+import { defineConfig, loadEnv } from 'vite'
+import react from '@vitejs/plugin-react'
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
-  if (mode !== 'development' && (!env.VITE_API_URL || env.VITE_API_URL.includes("localhost"))) {
-    console.error("\n\n################################################################")
-    console.error("BUILD FAILURE: VITE_API_URL is missing or set to localhost!")
-    console.error("Production builds must have a valid external API URL.")
-    console.error("Found VITE_API_URL=" + env.VITE_API_URL)
-    console.error("################################################################\n\n")
-    process.exit(1)
-  }
-
   return {
     plugins: [react()],
-
-    preview: {
-      host: true,
-      port: 3000,
-      allowedHosts: 'all'
-    },
-
+    
     server: {
       host: true,
       port: 5173,
-      allowedHosts: ['.railway.app', 'dz-kitab-frontend-production.up.railway.app']
+      allowedHosts: 'all'
     },
+    
     preview: {
-      allowedHosts: ['.railway.app', 'dz-kitab-frontend-production.up.railway.app']
+      host: true,
+      port: 4173,
+      allowedHosts: 'all'
+    },
+
+    build: {
+      outDir: 'dist',
+      rollupOptions: {
+        input: './index.html'
+      }
     }
   }
 })
