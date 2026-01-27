@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm run build"
+
+[deploy]
+startCommand = "npm run preview"
+port = 4173
+healthcheckPath = "/"
+healthcheckTimeout = 30
+
+[build.args]
+NODE_VERSION = "18"
