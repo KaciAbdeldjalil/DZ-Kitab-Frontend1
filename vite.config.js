@@ -17,5 +17,24 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    preview: {
+      host: true, // Listen on all network interfaces
+      port: 3000,
+      allowedHosts: [
+        'dz-kitab-frontend-production.up.railway.app',
+        // Add other domains if needed
+        'localhost',
+        '127.0.0.1'
+      ]
+    },
+    server: {
+      host: true, // For development
+      port: 5173,
+      allowedHosts: [
+        'dz-kitab-frontend-production.up.railway.app',
+        'localhost',
+        '127.0.0.1'
+      ]
+    }
   }
 })
