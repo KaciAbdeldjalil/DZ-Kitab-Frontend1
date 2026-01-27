@@ -4,18 +4,24 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-# Set your API URL - consider making this a build-time argument
 ENV VITE_API_BASE_URL=http://127.0.0.1:8000
 RUN npm run build
 
-# Stage 2: Serve with Node.js (better for Railway)
+# Stage 2: Production - Serve static files
 FROM node:20-alpine
 WORKDIR /app
-# Install serve globally
-RUN npm install -g serve
+
+# Copy only package.json to install serve
+COPY package*.json ./
+
+# Install serve as a regular dependency (not global)
+RUN npm install serve
+
 # Copy built files from build stage
 COPY --from=build /app/dist ./dist
-# Expose port 3000 (Railway default)
+
+# Expose port (Railway will assign its own port)
 EXPOSE 3000
-# Serve the static files
-CMD ["serve", "-s", "dist", "-l", "3000"]
+
+# Start the server using npx to avoid global install issues
+CMD ["npx", "serve", "-s", "dist", "-l", "3000"]
