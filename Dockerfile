@@ -1,13 +1,14 @@
-FROM node:18-slim
-
+FROM node:20-alpine AS build
 WORKDIR /app
-
 COPY package*.json ./
-
-RUN npm install
-
+RUN npm ci
 COPY . .
+# Hardcode the local URL for now
+ENV VITE_API_BASE_URL=http://127.0.0.1:8000
+RUN npm run build
 
-EXPOSE 5173
-
-CMD ["npm", "run", "dev", "--", "--host"]
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
