@@ -4,8 +4,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), '')
   
-  // TEMPORARY: Allow Railway deployment without VITE_API_URL
-  // Remove this after you fix the build
+  // Temporary: Allow Railway deployment
   const isRailway = process.env.RAILWAY_ENVIRONMENT
   
   if (command === 'build' && !isRailway && (!env.VITE_API_URL || env.VITE_API_URL.includes("localhost"))) {
@@ -18,13 +17,23 @@ export default defineConfig(({ mode, command }) => {
 
   return {
     plugins: [react()],
-    preview: {
-      host: '0.0.0.0',
-      port: 4173,
-    },
+    // Local development - port 5173
     server: {
-      host: '0.0.0.0',
+      host: true,
       port: 5173,
+    },
+    // Railway production - port 4173
+    preview: {
+      host: true,  // This is critical for Railway
+      port: 4173,
+      strictPort: true,  // Don't change port
+    },
+    // Important for SPA routing
+    build: {
+      outDir: 'dist',
+      rollupOptions: {
+        input: './index.html'
+      }
     }
   }
 })
