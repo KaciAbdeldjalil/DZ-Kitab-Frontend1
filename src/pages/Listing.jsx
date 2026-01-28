@@ -196,7 +196,7 @@ const Listing = () => {
 
   return (
     <div className="listing-page">
-      <div className="listing-container">
+      <div className="listing-container ">
         {/* LEFT SIDEBAR - FILTERS */}
         <aside className="filters-sidebar">
           <div className="filter-section">

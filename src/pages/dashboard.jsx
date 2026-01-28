@@ -150,7 +150,7 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="dashboard-page">
+      <div className="dashboard-page  ">
         <div className="dashboard-container">
 
           {/* HEADER */}

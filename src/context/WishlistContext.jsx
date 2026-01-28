@@ -51,6 +51,7 @@ export const WishlistProvider = ({ children }) => {
         }
         return prev;
       });
+      alert("Book added to wishlist");
     } catch (error) {
       console.error("Error adding to wishlist:", error);
     }

@@ -315,7 +315,7 @@ const MyAnnouncements = () => {
                     : "No books match your filters."}
                 </p>
                 {books.length === 0 ? (
-                  <Link to="../AddNewAnnounce" className="reset-btn">
+                  <Link to="/addannounce" className="reset-btn">
                     Create Announcement
                   </Link>
                 ) : (
