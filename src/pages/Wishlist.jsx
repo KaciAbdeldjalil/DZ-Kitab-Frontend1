@@ -40,6 +40,13 @@ const Wishlist = () => {
     setWishlistItems(prev => prev.filter(item => item.id !== id));
   };
 
+  if (loading) {
+    return (
+      <div className="loading">
+        <div class="loader"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="wishlist-container">

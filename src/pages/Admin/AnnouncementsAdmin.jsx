@@ -268,7 +268,9 @@ const AnnouncementsAdmin = () => {
 
           {/* CONTENT GRID */}
           {loading ? (
-            <div className="loading-container" style={{ textAlign: 'center', padding: '40px' }}>Loading announcements...</div>
+             <div className="loading">
+              <div class="loader"></div>
+            </div>
           ) : filteredBooks.length === 0 ? (
             <div className="no-results">
               <p>No announcements found.</p>

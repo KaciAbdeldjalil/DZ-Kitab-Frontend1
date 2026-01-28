@@ -145,8 +145,9 @@ export default function AdminDashboard() {
   if (loading) {
     return (
       <>
-        <NavAdmin />
-        <div style={{ padding: '40px', textAlign: 'center' }}>Loading Dashboard...</div>
+        <div className="loading">
+          <div class="loader"></div>
+        </div>
       </>
     )
   }

@@ -86,10 +86,8 @@ const BookDetails = () => {
   // If loading
   if (loading) {
     return (
-      <div className="book-details-page">
-        <div className="book-details-container">
-          <p>Loading book details...</p>
-        </div>
+      <div className="loading">
+        <div class="loader"></div>
       </div>
     );
   }

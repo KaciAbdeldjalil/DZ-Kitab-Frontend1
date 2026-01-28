@@ -35,6 +35,7 @@ const PublicRoute = ({ children }) => {
 export default function App() {
   return (
     <Routes>
+      
       <Route element={<Layout />}>
         <Route path="/" element={<Landingpage />} />
 

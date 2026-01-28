@@ -90,6 +90,11 @@ const Messages = () => {
             alert("Failed to send message:\n" + (errorDetail || error.message));
         }
     };
+    if (loading) {
+        <div className="loading">
+            <div class="loader"></div>
+        </div>
+    }
 
     return (
         <div className="messages-page">
@@ -109,7 +114,7 @@ const Messages = () => {
                     <div className="recent-conversations">
                         <h3 className="recent-title">Recent Conversations</h3>
                         <div className="conversations-list">
-                            {loading ? <p>Loading chats...</p> : filteredConversations.map((conv) => (
+                              {filteredConversations.map((conv)=> (
                                 <div
                                     key={conv.id}
                                     className={`conversation-item ${activeChat?.id === conv.id ? 'active' : ''}`}

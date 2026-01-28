@@ -349,7 +349,10 @@ const Listing = () => {
 
           {/* BOOK GRID */}
           {loading ? (
-            <div className="loading-container">Loading books...</div>
+            // <div className="loading-container">Loading books...</div>
+            <div className="loading">
+              <div class="loader"></div>
+            </div>
           ) : currentBooks.length === 0 ? (
             <div className="no-results">
               <p>No books found matching your filters.</p>

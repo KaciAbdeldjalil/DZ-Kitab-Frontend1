@@ -143,7 +143,9 @@ export default function Dashboard() {
     }
   };
 
-  if (loading) return <div className="text-center p-10">Loading Dashboard...</div>;
+  if (loading) return <div className="loading">
+    <div class="loader"></div>
+  </div>;
 
   // Mock mini charts for visual filler (since backend doesn't provide historical trend array yet)
   const mockTrend = [{ value: 10 }, { value: 15 }, { value: 10 }, { value: 18 }, { value: 14 }, { value: 17 }];

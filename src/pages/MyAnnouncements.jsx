@@ -297,8 +297,8 @@ const MyAnnouncements = () => {
             </div>
 
             {loading ? (
-              <div className="loading-state">
-                <p>Loading your announcements...</p>
+              <div className="loading">
+                <div class="loader"></div>
               </div>
             ) : error ? (
               <div className="error-state">
