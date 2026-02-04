@@ -62,7 +62,7 @@ export const Category = () => {
         <section className="category-section">
             <h3>Browse by <span>Book Types</span></h3>
 
-            <div className=" flex flex-warp gap-4 md:gap-6 lg:gap-8">
+            <div className=" flex flex-wrap gap-4 md:gap-6 lg:gap-8">
                 {categories.map((category, index) => (
                     <Link
                         key={index}
